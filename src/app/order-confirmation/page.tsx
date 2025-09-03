@@ -142,14 +142,14 @@ const OrderConfirmationPage: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {/* Order Details */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <Card className="p-6">
+              <Card className="p-5 sm:p-6">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                   جزئیات سفارش
                 </h2>
@@ -191,7 +191,7 @@ const OrderConfirmationPage: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
             >
-              <Card className="p-6">
+              <Card className="p-5 sm:p-6">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                   کد رهگیری
                 </h2>
@@ -199,16 +199,18 @@ const OrderConfirmationPage: React.FC = () => {
                 <div className="space-y-4">
                   <div className="bg-gray-50 p-4 rounded-xl">
                     <p className="text-sm text-gray-600 mb-2">کد رهگیری سفارش شما:</p>
-                    <div className="flex items-center justify-between">
-                      <code className="text-2xl font-bold text-primary">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 justify-between break-words">
+                      <code className="text-xl sm:text-2xl font-bold text-primary select-all break-all">
                         {order.trackingCode}
                       </code>
-                      <button
-                        onClick={copyTrackingCode}
-                        className="p-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-                      >
-                        <Copy size={20} />
-                      </button>
+                      <div className="flex sm:justify-end">
+                        <button
+                          onClick={copyTrackingCode}
+                          className="w-full sm:w-auto px-3 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+                        >
+                          <span className="inline-flex items-center gap-2"><Copy size={18} /> کپی</span>
+                        </button>
+                      </div>
                     </div>
                     {copied && (
                       <motion.p

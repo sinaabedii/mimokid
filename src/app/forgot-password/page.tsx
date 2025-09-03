@@ -134,7 +134,7 @@ const ForgotPasswordPage: React.FC = () => {
               <motion.button
                 onClick={() => router.push('/')}
                 aria-label="بازگشت به صفحه اصلی"
-                className="relative w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4 transition"
+                className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden mx-auto mb-4 transition"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}

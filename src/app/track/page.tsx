@@ -145,10 +145,10 @@ const TrackPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card className="p-8">
+          <Card className="p-5 sm:p-6 lg:p-8">
             <div className="max-w-2xl mx-auto">
-              <div className="flex space-x-4 space-x-reverse">
-                <div className="flex-1">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="flex-1 min-w-0">
                   <Input
                     label="کد رهگیری"
                     placeholder="کد رهگیری سفارش خود را وارد کنید"
@@ -157,11 +157,11 @@ const TrackPage: React.FC = () => {
                     error={error}
                   />
                 </div>
-                <div className="flex items-end">
+                <div className="flex items-end sm:items-center">
                   <Button
                     onClick={handleSearch}
                     disabled={isSearching}
-                    className="flex items-center space-x-2 space-x-reverse"
+                    className="w-full sm:w-auto flex items-center justify-center space-x-2 space-x-reverse"
                   >
                     {isSearching ? (
                       <>
@@ -190,13 +190,13 @@ const TrackPage: React.FC = () => {
           >
             <div className="space-y-8">
               {/* Order Status */}
-              <Card className="p-6">
+              <Card className="p-5 sm:p-6">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                   وضعیت سفارش
                 </h2>
                 
                 <div className="space-y-6">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div className="flex items-center space-x-3 space-x-reverse">
                       {getStatusIcon(order.status)}
                       <div>
@@ -281,7 +281,7 @@ const TrackPage: React.FC = () => {
               </Card>
 
               {/* Order Items */}
-              <Card className="p-6">
+              <Card className="p-5 sm:p-6">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                   محصولات سفارش
                 </h2>
@@ -293,15 +293,15 @@ const TrackPage: React.FC = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
-                      className="flex items-center space-x-4 space-x-reverse p-4 border border-gray-200 rounded-xl"
+                      className="flex items-center gap-4 p-4 border border-gray-200 rounded-xl flex-wrap sm:flex-nowrap"
                     >
                       <img
                         src={item.artwork.image}
                         alt={item.artwork.name}
-                        className="w-16 h-16 object-cover rounded-lg"
+                        className="w-16 h-16 object-cover rounded-lg flex-shrink-0"
                       />
                       
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <h3 className="font-semibold text-gray-800">
                           {item.product.name}
                         </h3>
@@ -314,7 +314,7 @@ const TrackPage: React.FC = () => {
                         </p>
                       </div>
                       
-                      <div className="text-right">
+                      <div className="text-right sm:text-left">
                         <p className="font-semibold text-gray-800">
                           {(item.price * item.quantity).toLocaleString()} تومان
                         </p>
@@ -325,12 +325,12 @@ const TrackPage: React.FC = () => {
               </Card>
 
               {/* Shipping Info */}
-              <Card className="p-6">
+              <Card className="p-5 sm:p-6">
                 <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                   اطلاعات ارسال
                 </h2>
                 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   <div className="flex items-start space-x-3 space-x-reverse">
                     <MapPin className="w-5 h-5 text-primary mt-1" />
                     <div>

@@ -29,28 +29,28 @@ const Header: React.FC = () => {
     <header className="fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 w-full">
         <div className="bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-sm border border-gray-100 rounded-xl lg:rounded-2xl px-3 sm:px-4">
-          <div className="grid grid-cols-12 items-center h-24 md:h-28 gap-3">
+          <div className="grid grid-cols-12 items-center h-16 md:h-18 gap-3">
           {/* Logo */}
           <motion.button
             onClick={() => router.push('/')}
-            className="col-span-6 md:col-span-3 flex items-center gap-3 sm:gap-4 group"
+            className="col-span-6 md:col-span-3 flex items-center  group"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             aria-label="لوگو میموکید"
           >
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 transition-all">
+            <div className="relative w-20 h-20 flex items-center transition-all">
               <Image
                 src="/logo/logo.png"
                 alt="ميموكيد"
-                width={120}
-                height={120}
+                width={96}
+                height={96}
                 quality={100}
                 className="object-contain"
                 priority
               />
             </div>
-            <motion.span className="text-2xl sm:text-3xl font-bold leading-none brand-signature">میموکید</motion.span>
+            <motion.span className="text-lg sm:text-2xl font-bold leading-none brand-signature py-3">میموکید</motion.span>
           </motion.button>
 
           {/* Desktop Menu */}
@@ -247,7 +247,7 @@ const Header: React.FC = () => {
       </div>
     </header>
     {/* Spacer to prevent layout shift due to fixed header */}
-    <div className="h-24 md:h-28" />
+    <div className="h-20 md:h-24" />
     </>
   );
 };

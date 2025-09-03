@@ -48,17 +48,17 @@ const Footer: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="flex items-center space-x-2 space-x-reverse mb-4">
-              <div className="relative w-20 h-20 rounded-xl overflow-hidden">
+              <div className="relative w-14 h-14 rounded-xl overflow-hidden">
                 <Image
                   src="/logo/logo.png"
                   alt="ميموكيد"
-                  width={80}
-                  height={80}
+                  width={56}
+                  height={56}
                   quality={100}
                   className="object-contain"
                 />
               </div>
-              <span className="text-2xl font-bold brand-signature">میموکید</span>
+              <span className="text-xl font-bold brand-signature">میموکید</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
               پلتفرمی برای تبدیل آثار هنری کودکان به محصولات واقعی و منحصر به فرد.
