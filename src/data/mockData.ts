@@ -11,7 +11,7 @@ export const mockUsers: User[] = [
   {
     id: '2',
     name: 'علی رضایی',
-    email: 'ali@example.com',
+    email: 'hadikhademi@gmail.com',
     phone: '09987654321',
     address: 'اصفهان، خیابان چهارباغ، پلاک 456'
   },
@@ -32,7 +32,7 @@ export const mockProducts: Product[] = [
     basePrice: 150000,
     colors: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'],
     sizes: ['S', 'M', 'L', 'XL'],
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400',
+    image: '/images/t-shirt.png',
     description: 'تی‌شرت نخی با کیفیت بالا برای کودکان'
   },
   {
@@ -42,7 +42,7 @@ export const mockProducts: Product[] = [
     basePrice: 80000,
     colors: ['#FFFFFF', '#FFE4E1', '#F0F8FF', '#F5F5DC', '#FFF8DC'],
     sizes: ['350ml', '400ml'],
-    image: 'https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=400',
+    image: '/images/Ceramic-mug.png',
     description: 'لیوان سرامیکی مقاوم با قابلیت شستشو در ماشین ظرفشویی'
   },
   {
@@ -52,7 +52,7 @@ export const mockProducts: Product[] = [
     basePrice: 120000,
     colors: ['#FFB6C1', '#98FB98', '#F0E68C', '#DDA0DD', '#F5DEB3'],
     sizes: ['کوچک', 'متوسط', 'بزرگ'],
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400',
+    image: '/images/cloth-bag.png',
     description: 'کیف پارچه‌ای مقاوم و زیبا برای استفاده روزانه'
   },
   {
@@ -62,7 +62,7 @@ export const mockProducts: Product[] = [
     basePrice: 100000,
     colors: ['#FFFFFF'],
     sizes: ['100 تکه', '200 تکه', '500 تکه'],
-    image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400',
+    image: '/images/puzzle.png',
     description: 'پازل با کیفیت بالا و تصویر واضح'
   }
 ];
@@ -71,7 +71,7 @@ export const mockArtworks: Artwork[] = [
   {
     id: '1',
     name: 'نقاشی خانه',
-    image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400',
+    image: '/images/house-painting.png',
     childName: 'سارا',
     uploadedAt: new Date('2024-01-15'),
     userId: '1'
@@ -79,7 +79,7 @@ export const mockArtworks: Artwork[] = [
   {
     id: '2',
     name: 'لگو قلعه',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400',
+    image: '/images/lego-piece.png',
     childName: 'علی',
     uploadedAt: new Date('2024-01-20'),
     userId: '2'
@@ -87,7 +87,7 @@ export const mockArtworks: Artwork[] = [
   {
     id: '3',
     name: 'کاردستی گل',
-    image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400',
+    image: '/images/flower-craft.png',
     childName: 'زهرا',
     uploadedAt: new Date('2024-01-25'),
     userId: '3'

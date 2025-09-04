@@ -43,14 +43,14 @@ const ForgotPasswordPage: React.FC = () => {
           transition={{ duration: 8, repeat: Infinity, delay: 1 }}
         />
 
-        <main className="relative flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-12">
+        <main className="relative flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
           <motion.div
             className="w-full max-w-md"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Card className="p-6 sm:p-8 text-center">
+            <Card className="p-5 sm:p-8 text-center">
               <motion.div
                 className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
                 initial={{ scale: 0 }}
@@ -61,7 +61,7 @@ const ForgotPasswordPage: React.FC = () => {
               </motion.div>
               
               <motion.h1
-                className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4"
+                className="text-xl sm:text-3xl font-bold text-gray-800 mb-3 sm:mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -70,7 +70,7 @@ const ForgotPasswordPage: React.FC = () => {
               </motion.h1>
               
               <motion.p
-                className="text-gray-600 mb-8"
+                className="text-gray-600 text-sm sm:text-base mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -87,16 +87,16 @@ const ForgotPasswordPage: React.FC = () => {
               >
                 <Button
                   onClick={() => router.push('/login')}
-                  className="w-full flex items-center justify-center space-x-2 space-x-reverse"
+                  className="w-full flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5"
                 >
-                  <ArrowLeft size={20} />
+                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>بازگشت به ورود</span>
                 </Button>
                 
                 <Button
                   variant="outline"
                   onClick={() => setIsSubmitted(false)}
-                  className="w-full"
+                  className="w-full text-sm sm:text-base py-2.5"
                 >
                   ارسال مجدد ایمیل
                 </Button>
@@ -122,19 +122,19 @@ const ForgotPasswordPage: React.FC = () => {
         transition={{ duration: 8, repeat: Infinity, delay: 1 }}
       />
 
-      <main className="relative flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-12">
+      <main className="relative flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <motion.div
           className="w-full max-w-md"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Card className="p-6 sm:p-8">
+          <Card className="p-5 sm:p-8">
             <div className="text-center mb-8">
               <motion.button
                 onClick={() => router.push('/')}
                 aria-label="بازگشت به صفحه اصلی"
-                className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden mx-auto mb-4 transition"
+                className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden mx-auto mb-4 transition"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -151,7 +151,7 @@ const ForgotPasswordPage: React.FC = () => {
               </motion.button>
               
               <motion.h1
-                className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2"
+                className="text-xl sm:text-3xl font-bold text-gray-800 mb-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -160,7 +160,7 @@ const ForgotPasswordPage: React.FC = () => {
               </motion.h1>
               
               <motion.p
-                className="text-gray-600"
+                className="text-gray-600 text-sm sm:text-base"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -169,7 +169,7 @@ const ForgotPasswordPage: React.FC = () => {
               </motion.p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -182,6 +182,7 @@ const ForgotPasswordPage: React.FC = () => {
                   value={email}
                   onChange={setEmail}
                   required
+                  startIcon={<Mail className="w-4 h-4" />}
                   error={error && !email ? 'ایمیل الزامی است' : ''}
                 />
               </motion.div>
@@ -205,18 +206,18 @@ const ForgotPasswordPage: React.FC = () => {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex items-center justify-center space-x-2 space-x-reverse"
+                  className="w-full flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5"
                   size="lg"
                 >
                   {isLoading ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                       <span>در حال ارسال...</span>
                     </>
                   ) : (
                     <>
                       <span>ارسال لینک بازیابی</span>
-                      <ArrowRight size={20} />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </>
                   )}
                 </Button>

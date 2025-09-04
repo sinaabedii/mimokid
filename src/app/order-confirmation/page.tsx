@@ -106,10 +106,10 @@ const OrderConfirmationPage: React.FC = () => {
       <div className="min-h-screen bg-background">
         <Header />
         
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
           {/* Success Animation */}
           <motion.div
-            className="text-center mb-12"
+            className="text-center mb-10 sm:mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -124,7 +124,7 @@ const OrderConfirmationPage: React.FC = () => {
             </motion.div>
             
             <motion.h1
-              className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
+              className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -133,7 +133,7 @@ const OrderConfirmationPage: React.FC = () => {
             </motion.h1>
             
             <motion.p
-              className="text-xl text-gray-600"
+              className="text-base md:text-xl text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}

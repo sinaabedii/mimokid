@@ -86,7 +86,7 @@ const UploadPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center justify-center gap-6 sm:gap-10 text-sm">
+          <div className="flex items-center justify-center gap-4 sm:gap-10 text-sm">
             <div className="flex items-center gap-2 text-primary">
               <div className="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-sm font-semibold">✓</div>
               <span>آپلود اثر</span>
@@ -110,10 +110,10 @@ const UploadPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">
             آپلود اثر هنری کودکت
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-base md:text-xl text-gray-600">
             تصویر نقاشی، لگو یا کاردستی کودکت رو آپلود کن
           </p>
         </motion.div>
@@ -125,7 +125,7 @@ const UploadPage: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="p-8">
+            <Card className="p-5 sm:p-8 overflow-hidden">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                 انتخاب تصویر
               </h2>
@@ -133,7 +133,7 @@ const UploadPage: React.FC = () => {
               {!uploadedFile ? (
                 <div
                   {...getRootProps()}
-                  className={`border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-300 ${
+                  className={`border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-300 ${
                     isDragActive
                       ? 'border-primary bg-primary/5'
                       : 'border-gray-300 hover:border-primary hover:bg-primary/5'
@@ -141,14 +141,14 @@ const UploadPage: React.FC = () => {
                 >
                   <input {...getInputProps()} />
                   <div className="space-y-4">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                      <Upload className="w-8 h-8 text-primary" />
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                      <Upload className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                     </div>
                     <div>
-                      <p className="text-lg font-medium text-gray-800 mb-2">
+                      <p className="text-base sm:text-lg font-medium text-gray-800 mb-2">
                         {isDragActive ? 'فایل رو اینجا رها کن' : 'فایل رو اینجا بکش یا کلیک کن'}
                       </p>
-                      <p className="text-gray-600">
+                      <p className="text-gray-600 text-sm sm:text-base">
                         فرمت‌های مجاز: JPG, PNG (حداکثر 5MB)
                       </p>
                     </div>
@@ -160,7 +160,7 @@ const UploadPage: React.FC = () => {
                     <img
                       src={previewUrl}
                       alt="پیش‌نمایش"
-                      className="w-full h-64 object-cover rounded-xl"
+                      className="w-full h-48 sm:h-56 object-cover rounded-xl"
                     />
                     <button
                       onClick={removeFile}
@@ -169,9 +169,9 @@ const UploadPage: React.FC = () => {
                       <X size={16} />
                     </button>
                   </div>
-                  <div className="flex items-center space-x-2 space-x-reverse text-sm text-gray-600">
-                    <ImageIcon size={16} />
-                    <span>{uploadedFile.name}</span>
+                  <div className="flex items-center space-x-2 space-x-reverse text-xs sm:text-sm text-gray-600">
+                    <ImageIcon size={14} className="sm:w-4 sm:h-4" />
+                    <span className="break-all">{uploadedFile.name}</span>
                     <span>•</span>
                     <span>{(uploadedFile.size / 1024 / 1024).toFixed(1)} MB</span>
                   </div>
@@ -186,7 +186,7 @@ const UploadPage: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Card className="p-8">
+            <Card className="p-5 sm:p-8 overflow-hidden">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                 اطلاعات اثر
               </h2>
@@ -197,6 +197,7 @@ const UploadPage: React.FC = () => {
                   placeholder="مثل: نقاشی خانه، لگو قلعه"
                   value={artworkName}
                   onChange={setArtworkName}
+                  startIcon={<ImageIcon className="w-4 h-4" />}
                 />
                 
                 <Input
@@ -204,6 +205,8 @@ const UploadPage: React.FC = () => {
                   placeholder="نام کودکت رو بنویس"
                   value={childName}
                   onChange={setChildName}
+                  startIcon={<Upload className="w-4 h-4" />}
+                  dir="rtl"
                 />
                 
                 <div className="bg-primary/5 border border-primary/20 rounded-xl p-4">
@@ -219,18 +222,18 @@ const UploadPage: React.FC = () => {
                 <Button
                   onClick={handleContinue}
                   disabled={!uploadedFile || isLoading}
-                  className="w-full flex items-center justify-center space-x-2 space-x-reverse"
+                  className="w-full flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5"
                   size="lg"
                 >
                   {isLoading ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                       <span>در حال پردازش...</span>
                     </>
                   ) : (
                     <>
                       <span>ادامه و انتخاب محصول</span>
-                      <ArrowRight size={20} />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </>
                   )}
                 </Button>

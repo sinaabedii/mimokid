@@ -10,7 +10,6 @@ const Footer: React.FC = () => {
 
   const footerLinks = {
     company: [
-      { name: 'درباره ما', href: '#about' },
       { name: 'تماس با ما', href: '#contact' },
       { name: 'قوانین و مقررات', href: '#terms' },
       { name: 'حریم خصوصی', href: '#privacy' }
@@ -47,17 +46,8 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-2 space-x-reverse mb-4">
-              <div className="relative w-14 h-14 rounded-xl overflow-hidden">
-                <Image
-                  src="/logo/logo.png"
-                  alt="ميموكيد"
-                  width={56}
-                  height={56}
-                  quality={100}
-                  className="object-contain"
-                />
-              </div>
+            <div className="flex items-center space-x-2 mb-4">
+              
               <span className="text-xl font-bold brand-signature">میموکید</span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">

@@ -88,15 +88,11 @@ a {
   background-clip: text;
   color: transparent;
   font-weight: 800;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.15px;
   transition: transform 300ms ease, text-shadow 300ms ease, filter 300ms ease;
   animation: brandIdle 6s ease-in-out infinite;
 }
-.brand-signature:hover {
-  transform: translateZ(0) scale(1.04);
-  text-shadow: 0 0 10px rgba(16,185,129,0.35), 0 0 18px rgba(139,92,246,0.35);
-  animation: brandHover 1.2s ease forwards;
-}
+/* hover effect removed per request */
 
 @keyframes brandIdle {
   0% { background-position: 0% 50%; }
@@ -106,11 +102,19 @@ a {
 
 @keyframes brandHover {
   0% { background-position: 0% 50%; filter: saturate(1); }
-  50% { background-position: 100% 50%; filter: saturate(1.2); }
-  100% { background-position: 50% 50%; filter: saturate(1.1); }
+  50% { background-position: 100% 50%; filter: saturate(1.1); }
+  100% { background-position: 50% 50%; filter: saturate(1.05); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .brand-signature { animation: none; }
   .brand-signature:hover { animation: none; }
+}
+
+/* Better small-screen legibility */
+@media (max-width: 640px) {
+  .brand-signature {
+    letter-spacing: 0.1px;
+    text-shadow: none;
+  }
 }

@@ -21,36 +21,35 @@ const Header: React.FC = () => {
   const menuItems = [
     { name: 'چطور کار می‌کنه؟', href: '#how-it-works' },
     { name: 'محصولات', href: '#products' },
-    { name: 'درباره ما', href: '#about' },
   ];
 
   return (
     <>
-    <header className="fixed top-0 left-0 right-0 z-50">
+    <header className="fixed top-2 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 w-full">
         <div className="bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-sm border border-gray-100 rounded-xl lg:rounded-2xl px-3 sm:px-4">
           <div className="grid grid-cols-12 items-center h-16 md:h-18 gap-3">
           {/* Logo */}
           <motion.button
             onClick={() => router.push('/')}
-            className="col-span-6 md:col-span-3 flex items-center  group"
+            className="col-span-6 md:col-span-3 flex items-center group"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             aria-label="لوگو میموکید"
           >
-            <div className="relative w-20 h-20 flex items-center transition-all">
+            <div className="relative flex items-center transition-all shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-20 xl:h-20">
               <Image
                 src="/logo/logo.png"
                 alt="ميموكيد"
-                width={96}
-                height={96}
+                fill
+                sizes="(max-width: 640px) 48px, (max-width: 768px) 56px, (max-width: 1024px) 64px, (max-width: 1280px) 72px, 80px"
                 quality={100}
                 className="object-contain"
                 priority
               />
             </div>
-            <motion.span className="text-lg sm:text-2xl font-bold leading-none brand-signature py-3">میموکید</motion.span>
+            <motion.span className="brand-signature py-2 text-base sm:text-xl md:text-2xl lg:text-3xl font-extrabold leading-tight">میموکید</motion.span>
           </motion.button>
 
           {/* Desktop Menu */}

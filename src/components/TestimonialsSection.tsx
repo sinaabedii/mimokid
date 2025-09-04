@@ -14,8 +14,8 @@ const TestimonialsSection: React.FC = () => {
       role: 'مادر سارا',
       content: 'نقاشی دخترم رو روی تی‌شرت چاپ کردیم. کیفیت فوق‌العاده بود و سارا خیلی خوشحال شد!',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100',
-      productImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200'
+      image: '/logo/logo.png',
+      productImage: '/logo/logo.png'
     },
     {
       id: 2,
@@ -23,8 +23,8 @@ const TestimonialsSection: React.FC = () => {
       role: 'پدر علی',
       content: 'لگو‌سازی پسرم رو روی پازل چاپ کردیم. واقعاً زیبا شد و حالا توی اتاقش نگهش می‌داره.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
-      productImage: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=200'
+      image: '/logo/logo.png',
+      productImage: '/logo/logo.png'
     },
     {
       id: 3,
@@ -32,8 +32,8 @@ const TestimonialsSection: React.FC = () => {
       role: 'مادر زهرا',
       content: 'کاردستی گل دخترم رو روی لیوان چاپ کردیم. هر روز صبح با این لیوان چای می‌خوریم.',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100',
-      productImage: 'https://images.unsplash.com/photo-1514228742587-6b1558fcf93a?w=200'
+      image: '/logo/logo.png',
+      productImage: '/logo/logo.png'
     }
   ];
 
@@ -50,8 +50,8 @@ const TestimonialsSection: React.FC = () => {
         role: 'کاربر میموکید',
         content: r.text,
         rating: r.rating,
-        image: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=100',
-        productImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200'
+        image: '/logo/logo.png',
+        productImage: '/logo/logo.png'
       }));
       setTestimonials((prev: any) => [...mapped, ...prev]);
     }
@@ -65,32 +65,32 @@ const TestimonialsSection: React.FC = () => {
         role: 'کاربر میموکید',
         content: r.text,
         rating: r.rating,
-        image: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?w=100',
-        productImage: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=200'
+        image: '/logo/logo.png',
+        productImage: '/logo/logo.png'
       },
       ...prev
     ]);
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-background to-white">
+    <section className="py-14 sm:py-18 lg:py-20 bg-gradient-to-br from-background to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">
             نظر مشتریان ما
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-gray-600 max-w-2xl mx-auto">
             والدین و کودکان از تجربه کار با میموکید راضی هستند
           </p>
         </motion.div>
 
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
           <div></div>
           <button onClick={() => setOpen(true)} className="rounded-xl bg-primary text-white px-4 py-2 text-sm hover:bg-primary/90">
             ثبت نظر
@@ -109,7 +109,7 @@ const TestimonialsSection: React.FC = () => {
 
           <div
             ref={scrollerRef}
-            className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 no-scrollbar"
+            className="flex gap-3.5 sm:gap-4 overflow-x-auto snap-x snap-mandatory pb-1.5 sm:pb-2 no-scrollbar"
           >
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -118,14 +118,14 @@ const TestimonialsSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="min-w-[85%] sm:min-w-[360px] snap-start"
+                className="min-w-[82%] sm:min-w-[360px] snap-start"
               >
-                <Card className="p-6 h-full">
+                <Card className="p-4 sm:p-6 h-full">
                   <div className="flex items-center mb-4">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
                     />
                     <div className="mr-3">
                       <h4 className="font-semibold text-gray-800">
@@ -141,14 +141,14 @@ const TestimonialsSection: React.FC = () => {
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 text-yellow-400 fill-current"
+                        className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
                       />
                     ))}
                   </div>
 
                   <div className="relative mb-1">
-                    <Quote className="w-8 h-8 text-primary/20 absolute -top-2 -right-2" />
-                    <p className="text-gray-700 leading-relaxed pr-6">
+                    <Quote className="w-7 h-7 sm:w-8 sm:h-8 text-primary/20 absolute -top-2 -right-2" />
+                    <p className="text-gray-700 leading-relaxed pr-5 sm:pr-6 text-sm sm:text-base">
                       {testimonial.content}
                     </p>
                   </div>

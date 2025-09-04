@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-background to-white">
+    <section className="py-10 sm:py-16 lg:py-20 bg-gradient-to-br from-background to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
@@ -36,9 +36,9 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="space-y-3 lg:space-y-4">
+            <div className="space-y-2 sm:space-y-3 lg:space-y-4">
               <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight"
+                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -49,7 +49,7 @@ const HeroSection: React.FC = () => {
                 </span>
               </motion.h1>
               <motion.p
-                className="text-base sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                className="text-sm sm:text-lg lg:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -60,7 +60,7 @@ const HeroSection: React.FC = () => {
             </div>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -68,7 +68,7 @@ const HeroSection: React.FC = () => {
               <Button 
                 onClick={() => window.location.href = '/upload'}
                 size="lg" 
-                className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
+                className="text-sm sm:text-lg px-5 sm:px-8 py-2.5 sm:py-4 w-full sm:w-auto"
               >
                 <span className="hidden sm:inline">شروع کن | آپلود اثر</span>
                 <span className="sm:hidden">شروع کن</span>
@@ -77,7 +77,7 @@ const HeroSection: React.FC = () => {
                 onClick={() => window.location.href = '#products'}
                 variant="outline" 
                 size="lg" 
-                className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto"
+                className="text-sm sm:text-lg px-5 sm:px-8 py-2.5 sm:py-4 w-full sm:w-auto"
               >
                 <span className="hidden sm:inline">ببین چطور کار می‌کنه</span>
                 <span className="sm:hidden">نحوه کار</span>
@@ -94,9 +94,9 @@ const HeroSection: React.FC = () => {
           >
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600"
+                src="/images/hero.jpg"
                 alt="کودک در حال نقاشی"
-                className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-2xl lg:rounded-3xl shadow-2xl"
+                className="w-full h-56 sm:h-80 lg:h-96 object-cover rounded-2xl lg:rounded-3xl shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl lg:rounded-3xl"></div>
             </div>
@@ -107,14 +107,14 @@ const HeroSection: React.FC = () => {
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <Card className="p-3 sm:p-4 bg-white shadow-lg">
+              <Card className="p-2.5 sm:p-4 bg-white shadow-lg">
                 <div className="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                  <div className="w-7 h-7 sm:w-12 sm:h-12 bg-primary/10 rounded-full flex items-center justify-center">
                     <Palette className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-sm sm:text-base">نقاشی سارا</p>
-                    <p className="text-xs sm:text-sm text-gray-600">روی تی‌شرت</p>
+                    <p className="font-semibold text-gray-800 text-xs sm:text-base">نقاشی سارا</p>
+                    <p className="text-[11px] sm:text-sm text-gray-600">روی تی‌شرت</p>
                   </div>
                 </div>
               </Card>
@@ -125,14 +125,14 @@ const HeroSection: React.FC = () => {
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity, delay: 1 }}
             >
-              <Card className="p-3 sm:p-4 bg-white shadow-lg">
+              <Card className="p-2.5 sm:p-4 bg-white shadow-lg">
                 <div className="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                  <div className="w-7 h-7 sm:w-12 sm:h-12 bg-secondary/10 rounded-full flex items-center justify-center">
                     <Truck className="w-4 h-4 sm:w-6 sm:h-6 text-secondary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-sm sm:text-base">ارسال شد</p>
-                    <p className="text-xs sm:text-sm text-gray-600">کد رهگیری: 12345</p>
+                    <p className="font-semibold text-gray-800 text-xs sm:text-base">ارسال شد</p>
+                    <p className="text-[11px] sm:text-sm text-gray-600">کد رهگیری: 12345</p>
                   </div>
                 </div>
               </Card>
@@ -142,7 +142,7 @@ const HeroSection: React.FC = () => {
 
         {/* Steps */}
         <motion.div
-          className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          className="mt-10 sm:mt-16 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}

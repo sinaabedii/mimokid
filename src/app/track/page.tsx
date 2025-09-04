@@ -12,6 +12,7 @@ import { getOrderById, getOrders } from '@/lib/storage';
 import { Order } from '@/types';
 
 const TrackPage: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [trackingCode, setTrackingCode] = useState('');
   const [order, setOrder] = useState<Order | null>(null);
   const [error, setError] = useState('');
@@ -19,6 +20,10 @@ const TrackPage: React.FC = () => {
   
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     // Check if tracking code is provided in URL
@@ -119,21 +124,35 @@ const TrackPage: React.FC = () => {
     }
   };
 
+  const getTimelineSteps = (ord: Order) => {
+    const baseDate = new Date((ord as any).createdAt);
+    return [
+      { status: 'pending', label: 'دریافت سفارش', date: baseDate as Date | null },
+      { status: 'processing', label: 'در حال چاپ', date: ord.status === 'processing' || ord.status === 'shipped' || ord.status === 'delivered' ? new Date(baseDate.getTime() + 24 * 60 * 60 * 1000) : null },
+      { status: 'shipped', label: 'ارسال شده', date: ord.status === 'shipped' || ord.status === 'delivered' ? new Date(baseDate.getTime() + 48 * 60 * 60 * 1000) : null },
+      { status: 'delivered', label: 'تحویل داده شده', date: ord.status === 'delivered' ? new Date(baseDate.getTime() + 72 * 60 * 60 * 1000) : null }
+    ];
+  };
+
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">
             پیگیری سفارش
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-base md:text-xl text-gray-600">
             با کد رهگیری سفارش خود را پیگیری کنید
           </p>
         </motion.div>
@@ -147,7 +166,7 @@ const TrackPage: React.FC = () => {
         >
           <Card className="p-5 sm:p-6 lg:p-8">
             <div className="max-w-2xl mx-auto">
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-col  gap-3 sm:gap-4">
                 <div className="flex-1 min-w-0">
                   <Input
                     label="کد رهگیری"
@@ -155,22 +174,24 @@ const TrackPage: React.FC = () => {
                     value={trackingCode}
                     onChange={setTrackingCode}
                     error={error}
+                    startIcon={<Search className="w-4 h-4" />}
+                    dir="rtl"
                   />
                 </div>
                 <div className="flex items-end sm:items-center">
                   <Button
                     onClick={handleSearch}
                     disabled={isSearching}
-                    className="w-full sm:w-auto flex items-center justify-center space-x-2 space-x-reverse"
+                    className="w-full sm:w-auto flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5"
                   >
                     {isSearching ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                         <span>جستجو...</span>
                       </>
                     ) : (
                       <>
-                        <Search size={20} />
+                        <Search className="w-4 h-4 sm:w-5 sm:h-5" />
                         <span>جستجو</span>
                       </>
                     )}
@@ -239,12 +260,7 @@ const TrackPage: React.FC = () => {
                 </h2>
                 
                 <div className="space-y-4">
-                  {[
-                    { status: 'pending', label: 'دریافت سفارش', date: order.createdAt },
-                    { status: 'processing', label: 'در حال چاپ', date: order.status === 'processing' || order.status === 'shipped' || order.status === 'delivered' ? new Date(order.createdAt.getTime() + 24 * 60 * 60 * 1000) : null },
-                    { status: 'shipped', label: 'ارسال شده', date: order.status === 'shipped' || order.status === 'delivered' ? new Date(order.createdAt.getTime() + 48 * 60 * 60 * 1000) : null },
-                    { status: 'delivered', label: 'تحویل داده شده', date: order.status === 'delivered' ? new Date(order.createdAt.getTime() + 72 * 60 * 60 * 1000) : null }
-                  ].map((step, index) => {
+                  {getTimelineSteps(order).map((step, index) => {
                     const isCompleted = order.status === step.status || 
                       (step.status === 'pending') ||
                       (step.status === 'processing' && ['processing', 'shipped', 'delivered'].includes(order.status)) ||
@@ -270,7 +286,7 @@ const TrackPage: React.FC = () => {
                           </h3>
                           {step.date && (
                             <p className="text-sm text-gray-600">
-                              {step.date.toLocaleDateString('fa-IR')}
+                              {new Date(step.date as any).toLocaleDateString('fa-IR')}
                             </p>
                           )}
                         </div>

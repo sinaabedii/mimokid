@@ -1,5 +1,14 @@
 import { User, Artwork, Product, CartItem, Order } from '@/types';
 
+// Safe localStorage shim for SSR/Build time
+const localStorage = (typeof window !== 'undefined' && window.localStorage)
+  ? window.localStorage
+  : {
+      getItem: (_key: string) => null as any,
+      setItem: (_key: string, _value: string) => {},
+      removeItem: (_key: string) => {}
+    } as any;
+
 // User Management
 export const saveUser = (user: User): void => {
   localStorage.setItem('currentUser', JSON.stringify(user));
@@ -101,7 +110,7 @@ export const initializeMockData = (): void => {
       {
         id: '2',
         name: 'علی رضایی',
-        email: 'ali@example.com',
+        email: 'hadikhademi@gmail.com',
         phone: '09987654321',
         address: 'اصفهان، خیابان چهارباغ، پلاک 456'
       },
@@ -122,7 +131,7 @@ export const initializeMockData = (): void => {
       {
         id: '1',
         name: 'نقاشی خانه',
-        image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400',
+        image: '/images/house-painting.png',
         childName: 'سارا',
         uploadedAt: new Date('2024-01-15'),
         userId: '1'
@@ -130,7 +139,7 @@ export const initializeMockData = (): void => {
       {
         id: '2',
         name: 'لگو قلعه',
-        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400',
+        image: '/images/lego-piece.png',
         childName: 'علی',
         uploadedAt: new Date('2024-01-20'),
         userId: '2'
@@ -138,7 +147,7 @@ export const initializeMockData = (): void => {
       {
         id: '3',
         name: 'کاردستی گل',
-        image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400',
+        image: '/images/flower-craft.png',
         childName: 'زهرا',
         uploadedAt: new Date('2024-01-25'),
         userId: '3'

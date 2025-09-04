@@ -143,10 +143,10 @@ const CartPage: React.FC = () => {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 sm:mb-4">
               سبد خرید خالی است
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-base sm:text-xl text-gray-600 mb-6 sm:mb-8">
               ابتدا محصولی را به سبد خرید اضافه کنید
             </p>
             <Button onClick={() => router.push('/products')}>
@@ -165,7 +165,7 @@ const CartPage: React.FC = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {/* Progress Steps at top (step 3 active) */}
         <div className="mb-8">
-          <div className="flex items-center justify-center gap-6 sm:gap-10 text-sm">
+          <div className="flex items-center justify-center gap-4 sm:gap-10 text-xs sm:text-sm">
             <div className="flex items-center gap-2 text-primary">
               <div className="w-7 h-7 bg-primary text-white rounded-full flex items-center justify-center text-sm font-semibold">✓</div>
               <span>آپلود اثر</span>
@@ -183,20 +183,20 @@ const CartPage: React.FC = () => {
           </div>
         </div>
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">
             سبد خرید و پرداخت
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-base md:text-xl text-gray-600">
             اطلاعات سفارش و پرداخت را تکمیل کن
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Cart Items */}
           <motion.div
             className="lg:col-span-2"
@@ -204,68 +204,68 @@ const CartPage: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="p-6">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            <Card className="p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">
                 سفارشات شما
               </h2>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {cartItems.map((item, index) => (
                   <motion.div
                     key={item.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    className="flex items-center space-x-4 space-x-reverse p-4 border border-gray-200 rounded-xl"
+                    className="flex items-center space-x-3 sm:space-x-4 space-x-reverse p-3 sm:p-4 border border-gray-200 rounded-xl"
                   >
                     <img
                       src={item.artwork.image}
                       alt={item.artwork.name}
-                      className="w-20 h-20 object-cover rounded-lg"
+                      className="w-14 h-14 sm:w-20 sm:h-20 object-cover rounded-lg"
                     />
                     
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-800">
+                      <h3 className="font-semibold text-gray-800 text-sm sm:text-base">
                         {item.product.name}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 text-xs sm:text-sm">
                         {item.artwork.name}
                         {item.artwork.childName && ` - اثر ${item.artwork.childName}`}
                       </p>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 text-xs sm:text-sm">
                         رنگ: <span style={{ color: item.selectedColor }}>●</span> | سایز: {item.selectedSize}
                       </p>
                     </div>
                     
-                    <div className="flex items-center space-x-3 space-x-reverse">
+                    <div className="flex items-center space-x-2 sm:space-x-3 space-x-reverse">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors"
+                        className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors text-sm"
                       >
                         -
                       </button>
-                      <span className="w-8 text-center font-semibold">
+                      <span className="w-6 sm:w-8 text-center font-semibold text-sm sm:text-base">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors"
+                        className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors text-sm"
                       >
                         +
                       </button>
                     </div>
                     
                     <div className="text-right">
-                      <p className="font-semibold text-gray-800">
+                      <p className="font-semibold text-gray-800 text-sm sm:text-base">
                         {(item.price * item.quantity).toLocaleString()} تومان
                       </p>
                     </div>
                     
                     <button
                       onClick={() => removeItem(item.id)}
-                      className="w-8 h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors"
+                      className="w-7 h-7 sm:w-8 sm:h-8 bg-red-100 text-red-600 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors"
                     >
-                      <Trash2 size={16} />
+                      <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
                   </motion.div>
                 ))}
@@ -281,8 +281,8 @@ const CartPage: React.FC = () => {
           >
             <div className="space-y-6">
               {/* User Info */}
-              <Card className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              <Card className="p-4 sm:p-6">
+                <h2 className="text-base sm:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
                   اطلاعات تحویل
                 </h2>
                 
@@ -293,6 +293,7 @@ const CartPage: React.FC = () => {
                     value={userInfo.name}
                     onChange={(value) => setUserInfo({ ...userInfo, name: value })}
                     required
+                    startIcon={<User className="w-4 h-4" />}
                   />
                   
                   <Input
@@ -302,6 +303,8 @@ const CartPage: React.FC = () => {
                     onChange={(value) => setUserInfo({ ...userInfo, phone: value })}
                     type="tel"
                     required
+                    startIcon={<Phone className="w-4 h-4" />}
+                    dir="rtl"
                   />
                   
                   <div>
@@ -312,7 +315,7 @@ const CartPage: React.FC = () => {
                       value={userInfo.address}
                       onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })}
                       placeholder="آدرس کامل تحویل را وارد کنید"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+                      className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
                       rows={3}
                       required
                     />
@@ -321,8 +324,8 @@ const CartPage: React.FC = () => {
               </Card>
 
               {/* Order Summary */}
-              <Card className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800 mb-4">
+              <Card className="p-5 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-3 sm:mb-4">
                   خلاصه سفارش
                 </h2>
                 
@@ -339,7 +342,7 @@ const CartPage: React.FC = () => {
                   ))}
                   
                   <div className="border-t border-gray-200 pt-3">
-                    <div className="flex justify-between text-lg font-bold">
+                    <div className="flex justify-between text-sm sm:text-lg font-bold">
                       <span>مجموع:</span>
                       <span className="text-primary">
                         {totalPrice.toLocaleString()} تومان
@@ -353,17 +356,17 @@ const CartPage: React.FC = () => {
               <Button
                 onClick={handleCheckout}
                 disabled={isProcessing}
-                className="w-full flex items-center justify-center space-x-2 space-x-reverse"
+                className="w-full flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5"
                 size="lg"
               >
                 {isProcessing ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                     <span>در حال پردازش...</span>
                   </>
                 ) : (
                   <>
-                    <CreditCard size={20} />
+                    <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
                     <span>پرداخت و ثبت سفارش</span>
                   </>
                 )}

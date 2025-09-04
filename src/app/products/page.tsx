@@ -107,15 +107,15 @@ const ProductsPage: React.FC = () => {
           </div>
         </div>
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-9 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-2.5 md:mb-4">
             انتخاب محصول
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-sm md:text-xl text-gray-600">
             محصول مورد نظرت رو برای چاپ اثر هنری انتخاب کن
           </p>
         </motion.div>
@@ -127,7 +127,7 @@ const ProductsPage: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="p-6">
+            <Card className="p-5 sm:p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">
                 اثر هنری شما
               </h2>
@@ -135,7 +135,7 @@ const ProductsPage: React.FC = () => {
                 <img
                   src={artwork.image}
                   alt={artwork.name}
-                  className="w-full h-48 object-cover rounded-xl"
+                  className="w-full h-44 sm:h-48 object-cover rounded-xl"
                 />
                 <div>
                   <h3 className="font-semibold text-gray-800">{artwork.name}</h3>
@@ -146,7 +146,7 @@ const ProductsPage: React.FC = () => {
                 <Button
                   variant="outline"
                   onClick={() => router.push('/upload')}
-                  className="w-full"
+                  className="w-full text-sm sm:text-base py-2.5"
                 >
                   تغییر اثر
                 </Button>
@@ -171,7 +171,7 @@ const ProductsPage: React.FC = () => {
                 >
                   <Card
                     hover
-                    className={`p-6 cursor-pointer transition-all duration-300 ${
+                    className={`p-5 sm:p-6 cursor-pointer transition-all duration-300 ${
                       selectedProduct?.id === product.id
                         ? 'ring-2 ring-primary bg-primary/5'
                         : ''
@@ -182,7 +182,7 @@ const ProductsPage: React.FC = () => {
                       <img
                         src={product.image}
                         alt={product.name}
-                        className="w-full h-40 object-cover rounded-xl mb-4"
+                        className="w-full h-36 sm:h-40 object-cover rounded-xl mb-3.5 sm:mb-4"
                       />
                       {selectedProduct?.id === product.id && (
                         <div className="absolute top-2 right-2 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center">
@@ -191,20 +191,21 @@ const ProductsPage: React.FC = () => {
                       )}
                     </div>
                     
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-1.5 sm:mb-2">
                       {product.name}
                     </h3>
-                    <p className="text-gray-600 mb-4 text-sm">
+                    <p className="text-gray-600 mb-3 text-sm">
                       {product.description}
                     </p>
                     
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-primary">
+                      <span className="text-xl sm:text-2xl font-bold text-primary">
                         {product.basePrice.toLocaleString()} تومان
                       </span>
                       <Button
                         variant={selectedProduct?.id === product.id ? 'primary' : 'outline'}
                         size="sm"
+                        className="text-xs sm:text-sm py-2 sm:py-2.5"
                       >
                         {selectedProduct?.id === product.id ? 'انتخاب شده' : 'انتخاب'}
                       </Button>
@@ -224,23 +225,23 @@ const ProductsPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <Card className="p-8">
+            <Card className="p-6 sm:p-8">
               <h2 className="text-2xl font-semibold text-gray-800 mb-6">
                 سفارشی‌سازی محصول
               </h2>
               
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                 {/* Color Selection */}
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
                     انتخاب رنگ
                   </h3>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2.5 sm:gap-3">
                     {selectedProduct.colors.map((color, index) => (
                       <button
                         key={index}
                         onClick={() => setSelectedColor(color)}
-                        className={`w-12 h-12 rounded-full border-4 transition-all duration-300 ${
+                        className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-4 transition-all duration-300 ${
                           selectedColor === color
                             ? 'border-primary scale-110'
                             : 'border-gray-300 hover:border-gray-400'
@@ -256,12 +257,12 @@ const ProductsPage: React.FC = () => {
                   <h3 className="text-lg font-semibold text-gray-800 mb-4">
                     انتخاب سایز
                   </h3>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2.5 sm:gap-3">
                     {selectedProduct.sizes.map((size, index) => (
                       <button
                         key={index}
                         onClick={() => setSelectedSize(size)}
-                        className={`px-4 py-2 rounded-xl border-2 transition-all duration-300 ${
+                        className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border-2 transition-all duration-300 ${
                           selectedSize === size
                             ? 'border-primary bg-primary text-white'
                             : 'border-gray-300 text-gray-700 hover:border-gray-400'
@@ -275,26 +276,26 @@ const ProductsPage: React.FC = () => {
               </div>
 
               {/* Preview */}
-              <div className="mt-8 p-6 bg-gray-50 rounded-xl">
+              <div className="mt-6 sm:mt-8 p-5 sm:p-6 bg-gray-50 rounded-xl">
                 <h3 className="text-lg font-semibold text-gray-800 mb-4">
                   پیش‌نمایش سفارش
                 </h3>
-                <div className="flex items-center space-x-6 space-x-reverse">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6">
                   <img
                     src={artwork.image}
                     alt="اثر هنری"
-                    className="w-20 h-20 object-cover rounded-lg"
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg"
                   />
                   <div className="flex-1">
                     <h4 className="font-semibold text-gray-800">
                       {selectedProduct.name}
                     </h4>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 text-sm sm:text-base">
                       رنگ: <span style={{ color: selectedColor }}>●</span> | سایز: {selectedSize}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-primary">
+                  <div className="text-right sm:text-left">
+                    <p className="text-lg sm:text-2xl font-bold text-primary">
                       {selectedProduct.basePrice.toLocaleString()} تومان
                     </p>
                   </div>
@@ -302,31 +303,31 @@ const ProductsPage: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex justify-between items-center mt-8">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between items-stretch sm:items-center mt-6 sm:mt-8">
                 <Button
                   variant="outline"
                   onClick={() => router.push('/upload')}
-                  className="flex items-center space-x-2 space-x-reverse"
+                  className="w-full sm:w-auto flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5"
                 >
-                  <ArrowLeft size={20} />
+                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>بازگشت</span>
                 </Button>
                 
                 <Button
                   onClick={handleAddToCart}
                   disabled={isLoading}
-                  className="flex items-center space-x-2 space-x-reverse"
+                  className="w-full sm:w-auto flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5"
                   size="lg"
                 >
                   {isLoading ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                       <span>در حال افزودن...</span>
                     </>
                   ) : (
                     <>
                       <span>افزودن به سبد خرید</span>
-                      <ArrowRight size={20} />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </>
                   )}
                 </Button>

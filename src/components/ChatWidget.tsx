@@ -18,6 +18,38 @@ const starterHints = [
   'زمان ارسال چقدره؟'
 ];
 
+// Lightweight in-memory knowledge base
+const KNOWLEDGE = {
+  assistantIntro:
+    'من دستیار میموکید هستم؛ کمک می‌کنم اثر هنری کودکت رو به محصول واقعی تبدیل کنی، درباره مراحل، زمان و هزینه‌ها راهنمایی می‌کنم و وضعیت سفارش رو توضیح می‌دم.',
+  people: {
+    'هادی خادمی': {
+      name: 'هادی خادمی',
+      role: 'مدیر کل اداره توسعه فناوری اطلاعات، امنیت و هوشمندسازی',
+      lastDegree: 'کارشناسی ارشد مدیریت اجرایی',
+      area: 'معاونت پشتیبانی',
+      education: [
+        'کارشناسی مهندسی نرم‌افزار – دانشگاه علم و فرهنگ',
+        'کارشناسی ارشد مدیریت اجرایی – دانشگاه علامه طباطبایی',
+        'دکتری (امتحان جامع) مهندسی فناوری اطلاعات – دانشگاه تربیت مدرس'
+      ],
+      experience: [
+        'کارشناس مسئول اداره سامانه‌های نرم‌افزاری دانشگاه علم و فرهنگ – ۱۳۹۴ تا ۱۴۰۲',
+        'مدیر کل اداره توسعه فناوری اطلاعات، امنیت و هوشمندسازی – ۱۴۰۲ تاکنون'
+      ]
+    }
+  }
+} as const;
+
+const normalize = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[\u200c\s]+/g, ' ')
+    .trim();
+
+const includesAny = (text: string, keys: string[]) =>
+  keys.some((k) => text.includes(normalize(k)));
+
 const ChatWidget: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -39,21 +71,48 @@ const ChatWidget: React.FC = () => {
   }, [messages]);
 
   const mockReply = (text: string) => {
-    // very simple heuristic for demo
-    const t = text.toLowerCase();
+    // simple heuristic with a tiny knowledge base
+    const t = normalize(text);
+
+    // Who are you / introduce yourself
+    if (includesAny(t, ['کی هستی', 'شما کی هستید', 'خودتو معرفی کن', 'who are you', 'introduce yourself', 'اسم شما چیه'])) {
+      return KNOWLEDGE.assistantIntro;
+    }
+
+    // Person knowledge: Hadi Khademi
+    if (includesAny(t, ['هادی خادمی', 'khademi', 'hadi khademi'])) {
+      const p = KNOWLEDGE.people['هادی خادمی'];
+      return [
+        `${p.name} - ${p.role} (${p.area})`,
+        `آخرین مدرک: ${p.lastDegree}`,
+        `سوابق تحصیلی:`,
+        `• ${p.education[0]}`,
+        `• ${p.education[1]}`,
+        `• ${p.education[2]}`,
+        `سوابق اجرایی:`,
+        `• ${p.experience[0]}`,
+        `• ${p.experience[1]}`
+      ].join('\n');
+    }
+
+    // Upload flow
     if (t.includes('آپلود') || t.includes('upload')) {
       return 'برای آپلود به صفحه "آپلود اثر" برو و تصویرت رو بکش و بنداز داخل کادر. حجم حداکثر ۵ مگابایت و فرمت JPG/PNG.';
     }
+    // Products
     if (t.includes('محصول')) {
       return 'در حال حاضر تی‌شرت، لیوان سرامیکی، کیف پارچه‌ای و پازل داریم. به زودی محصولات بیشتری اضافه می‌شود.';
     }
+    // Pricing
     if (t.includes('قیمت') || t.includes('هزینه')) {
       return 'قیمت پایه تی‌شرت از ۴۹۰ هزار تومان، لیوان از ۲۲۰ هزار تومان و کیف از ۳۵۰ هزار تومان شروع می‌شود.';
     }
+    // Shipping / time
     if (t.includes('ارسال') || t.includes('زمان')) {
       return 'زمان آماده‌سازی و ارسال معمولاً ۳ تا ۵ روز کاری است. کد رهگیری بعد از ثبت سفارش ارائه می‌شود.';
     }
-    return 'سؤال خوبی بود! برای راهنمایی بیشتر می‌توانی به بخش نحوه کار مراجعه کنی یا دقیق‌تر بپرسی تا راهنمایی‌ات کنم.';
+    // Fallback
+    return 'سؤال خوبی بود! بگو دقیقاً درباره کدام بخش کمک می‌خواهی (آپلود، محصول، قیمت، ارسال یا اطلاعات افراد) تا راهنمایی‌ات کنم.';
   };
 
   const sendMessage = () => {

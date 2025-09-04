@@ -59,19 +59,19 @@ const LoginPage: React.FC = () => {
         transition={{ duration: 9, repeat: Infinity, delay: 1 }}
       />
 
-      <main className="relative flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-12">
+      <main className="relative flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
         <motion.div
           className="w-full max-w-md"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Card className="p-6 sm:p-8">
+          <Card className="p-5 sm:p-8">
             <div className="text-center mb-8">
               <motion.button
                 onClick={() => router.push('/')}
                 aria-label="بازگشت به صفحه اصلی"
-                className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden mx-auto mb-4 transition"
+                className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden mx-auto mb-4 transition"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -88,7 +88,7 @@ const LoginPage: React.FC = () => {
               </motion.button>
               
               <motion.h1
-                className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2"
+                className="text-xl sm:text-3xl font-bold text-gray-800 mb-2"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -97,7 +97,7 @@ const LoginPage: React.FC = () => {
               </motion.h1>
               
               <motion.p
-                className="text-gray-600"
+                className="text-gray-600 text-sm sm:text-base"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -106,7 +106,7 @@ const LoginPage: React.FC = () => {
               </motion.p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -119,6 +119,7 @@ const LoginPage: React.FC = () => {
                   value={email}
                   onChange={setEmail}
                   required
+                  startIcon={<User className="w-4 h-4" />}
                   error={error && !email ? 'ایمیل الزامی است' : ''}
                 />
               </motion.div>
@@ -139,7 +140,7 @@ const LoginPage: React.FC = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="رمز عبور خود را وارد کنید"
                       required
-                      className={`w-full px-4 py-3 pr-12 border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
+                      className={`w-full px-3.5 py-2.5 pr-11 sm:px-4 sm:py-3 sm:pr-12 border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 ${
                         error && !password ? 'border-red-500' : 'border-gray-300'
                       }`}
                     />
@@ -191,18 +192,18 @@ const LoginPage: React.FC = () => {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full flex items-center justify-center space-x-2 space-x-reverse"
+                  className="w-full flex items-center justify-center space-x-2 space-x-reverse text-sm sm:text-base py-2.5 sm:py-3.5"
                   size="lg"
                 >
                   {isLoading ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                       <span>در حال ورود...</span>
                     </>
                   ) : (
                     <>
                       <span>ورود</span>
-                      <ArrowRight size={20} />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </>
                   )}
                 </Button>
@@ -224,20 +225,6 @@ const LoginPage: React.FC = () => {
                   ثبت نام کنید
                 </button>
               </p>
-            </motion.div>
-
-            {/* Demo Credentials */}
-            <motion.div
-              className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
-            >
-              <h3 className="font-semibold text-primary mb-2 text-sm">اطلاعات تست:</h3>
-              <div className="text-xs text-gray-700 space-y-1">
-                <p><strong>ایمیل:</strong> ali@example.com</p>
-                <p><strong>رمز عبور:</strong> 123456</p>
-              </div>
             </motion.div>
           </Card>
         </motion.div>

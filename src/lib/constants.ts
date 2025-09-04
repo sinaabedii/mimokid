@@ -92,8 +92,8 @@ export const ROUTES = {
 export const MOCK_USERS = [
   {
     id: '1',
-    name: 'علی احمدی',
-    email: 'ali@example.com',
+    name: 'هادی خادمی',
+    email: 'hadikhademi@gmail.com',
     phone: '09123456789',
     password: '123456',
     createdAt: new Date('2024-01-01')

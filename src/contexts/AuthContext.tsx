@@ -67,17 +67,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const mockUsers = [
       {
         id: '1',
-        name: 'علی احمدی',
-        email: 'ali@example.com',
+        name: 'هادی خادمی',
+        email: 'hadikhademi@gmail.com',
         phone: '09123456789',
         password: '123456',
         createdAt: new Date('2024-01-01')
       },
       {
         id: '2',
-        name: 'مریم رضایی',
-        email: 'maryam@example.com',
-        phone: '09987654321',
+        name: 'پریسا محمدی',
+        email: 'parisamohamadi@gmail.com',
+        phone: '09338903385',
         password: '123456',
         createdAt: new Date('2024-01-15')
       }

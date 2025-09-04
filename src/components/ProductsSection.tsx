@@ -8,19 +8,19 @@ import Button from './ui/Button';
 
 const ProductsSection: React.FC = () => {
   return (
-    <section id="products" className="py-12 sm:py-16 lg:py-20 bg-white">
+    <section id="products" className="py-10 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-3 sm:mb-4">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-gray-800 mb-2.5 sm:mb-4">
             محصولات ما
           </h2>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
             آثار هنری کودکت رو روی محصولات مختلف چاپ می‌کنیم
           </p>
         </motion.div>
@@ -39,7 +39,7 @@ const ProductsSection: React.FC = () => {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-40 sm:h-48 object-cover"
+                    className="w-full h-36 sm:h-48 object-cover"
                   />
                   <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 sm:px-3 sm:py-1">
                     <span className="text-xs sm:text-sm font-semibold text-gray-800">
@@ -48,11 +48,11 @@ const ProductsSection: React.FC = () => {
                   </div>
                 </div>
                 
-                <div className="p-4 sm:p-6 flex flex-col flex-1">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
+                <div className="p-3.5 sm:p-6 flex flex-col flex-1">
+                  <h3 className="text-base sm:text-xl font-semibold text-gray-800 mb-1.5">
                     {product.name}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-sm flex-1">
+                  <p className="text-gray-600 mb-3 text-sm flex-1">
                     {product.description}
                   </p>
                   
@@ -75,7 +75,7 @@ const ProductsSection: React.FC = () => {
                   
                   <Button 
                     onClick={() => window.location.href = '/upload'}
-                    className="w-full text-sm sm:text-base"
+                    className="w-full text-sm sm:text-base py-2.5"
                   >
                     انتخاب کن
                   </Button>
